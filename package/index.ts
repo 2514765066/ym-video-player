@@ -1,6 +1,3 @@
-import YmPlayer from "./index.vue";
-export type a = {
-  a: string;
-};
+import YmVideoPlayer from "./index.vue";
 
-export { YmPlayer };
+export { YmVideoPlayer };

@@ -27,17 +27,21 @@ export default defineConfig({
     outDir: "es",
 
     rollupOptions: {
-      external: ["hls.js"],
+      external: ["hls.js", "vue"],
       input: ["./package/index.ts"],
-      output: [
-        {
-          format: "es",
-          dir: "es",
-          entryFileNames: "[name].js",
-          preserveModules: true,
-          preserveModulesRoot: "package",
+      output: {
+        format: "es",
+        dir: "es",
+        entryFileNames: "[name].js",
+        preserveModules: true,
+        preserveModulesRoot: "package",
+        assetFileNames: assetInfo => {
+          if (assetInfo.names[0].endsWith(".css")) {
+            return "index.css";
+          }
+          return assetInfo.names[0];
         },
-      ],
+      },
     },
 
     lib: {
