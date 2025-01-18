@@ -16,7 +16,7 @@
     <div ref="progressRef" :style="{ opacity: bottomVisible ? 1 : 0 }"></div>
 
     <!-- 缓冲进度 -->
-    <div :style="{ opacity: bottomVisible ? 1 : 0 }"></div>
+    <div></div>
 
     <!-- 播放进度 -->
     <div></div>

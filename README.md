@@ -13,6 +13,6 @@ pnpm i ym-video-player
 ### 使用
 
 ```ts
-import "ym-video-player/index.css"
-import { YmVideoPlayer } from "ym-video-player"
+import "ym-video-player/index.css";
+import { YmVideoPlayer } from "ym-video-player";
 ```

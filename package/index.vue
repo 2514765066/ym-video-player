@@ -1,5 +1,10 @@
 <template>
-  <section class="ym-player" ref="playerRef" @mousemove="handleMouseMove">
+  <section
+    class="ym-player"
+    ref="playerRef"
+    @mousemove="handleMouseMove"
+    :class="{ 'ym-player-hidden-cursor': !bottomVisible }"
+  >
     <Video />
     <Tip />
     <Bottom />
@@ -17,7 +22,7 @@ import Hls from "hls.js";
 import { formatUnit } from "@/hooks/useCss";
 import { play } from "@/stores/usePlay";
 import { videoRef, playerRef } from "@/stores/useEl";
-import { handleMouseMove } from "@/stores/useBottom";
+import { handleMouseMove, bottomVisible } from "@/stores/useBottom";
 import { list, selectedIndex, selectedSrc } from "@/stores/useList";
 import { useEvent } from "@/hooks/useEvent";
 
@@ -69,6 +74,10 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss">
+.ym-player-hidden-cursor {
+  cursor: none !important;
+}
+
 .ym-player {
   --main-color: red;
 

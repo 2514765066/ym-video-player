@@ -5,6 +5,7 @@
     @loadedmetadata="handleLoadedmetadata"
     @timeupdate="handleTimeUpdate"
     @playing="handleBufferedTime"
+    @stalled="handleStalled"
   ></video>
 </template>
 
@@ -51,6 +52,9 @@ const handleBufferedTime = () => {
 
   videoBufferedTime.value = bufferedTime;
 };
+
+//处理卡顿
+const handleStalled = () => {};
 </script>
 
 <style scoped lang="scss">
