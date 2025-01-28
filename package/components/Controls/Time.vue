@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { formatTime } from "@/hooks/useFormatTime";
+import { formatTime } from "@/utils/formatTime";
 import { videoCurrentTime, videoDuration } from "@/stores/useTime";
 
 //格式化后的视频播放时长

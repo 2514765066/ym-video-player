@@ -2,10 +2,11 @@
   <video
     ref="videoRef"
     @click="toggle"
-    @loadedmetadata="handleLoadedmetadata"
     @timeupdate="handleTimeUpdate"
     @playing="handleBufferedTime"
-    @stalled="handleStalled"
+    @loadedmetadata="handleDuration"
+    @durationchange="handleDuration"
+    @ended="next"
   ></video>
 </template>
 
@@ -17,9 +18,10 @@ import {
   videoCurrentTime,
   videoBufferedTime,
 } from "@/stores/useTime";
+import { next } from "@/stores/useList";
 
 //处理加载事件
-const handleLoadedmetadata = () => {
+const handleDuration = () => {
   if (!videoRef.value) {
     return;
   }
@@ -52,9 +54,6 @@ const handleBufferedTime = () => {
 
   videoBufferedTime.value = bufferedTime;
 };
-
-//处理卡顿
-const handleStalled = () => {};
 </script>
 
 <style scoped lang="scss">

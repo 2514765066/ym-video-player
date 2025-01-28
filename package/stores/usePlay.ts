@@ -1,10 +1,7 @@
 import { videoRef } from "./useEl";
 
-//是否播放
-const _isPlay = ref(false);
-
 //只读
-export const isPlay = readonly(_isPlay);
+export const isPlay = ref(false);
 
 //播放
 export const play = () => {
@@ -12,7 +9,7 @@ export const play = () => {
     return;
   }
 
-  _isPlay.value = true;
+  isPlay.value = true;
 
   videoRef.value.play();
 };
@@ -23,7 +20,7 @@ export const pause = () => {
     return;
   }
 
-  _isPlay.value = false;
+  isPlay.value = false;
 
   videoRef.value.pause();
 };

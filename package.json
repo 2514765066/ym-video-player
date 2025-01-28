@@ -1,6 +1,6 @@
 {
   "name": "ym-video-player",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "type": "module",
   "files": [
     "es"
@@ -11,7 +11,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc  && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "release": "pnpm build && npm publish"
   },
   "devDependencies": {
     "@types/node": "^22.10.3",

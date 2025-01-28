@@ -1,10 +1,7 @@
 import { videoRef } from "./useEl";
 
 //声音
-const _volume = ref(100);
-
-//只读
-export const volume = readonly(_volume);
+export const volume = ref(100);
 
 //改变声音
 export const updateVolume = (num: number) => {
@@ -16,7 +13,7 @@ export const updateVolume = (num: number) => {
     return;
   }
 
-  _volume.value += num;
+  volume.value += num;
 };
 
 //监视声音

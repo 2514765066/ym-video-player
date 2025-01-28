@@ -6,20 +6,22 @@
     :class="{ 'ym-player-hidden-cursor': !bottomVisible }"
   >
     <Video />
-    <Tip />
+
     <Bottom />
 
     <List />
+
+    <Volume />
   </section>
 </template>
 
 <script setup lang="ts">
+import Volume from "@/components/Tip/Volume.vue";
 import Video from "./components/Video/index.vue";
 import Bottom from "./components/Bottom/index.vue";
 import List from "./components/List/index.vue";
-import Tip from "./components/Tip/index.vue";
 import Hls from "hls.js";
-import { formatUnit } from "@/hooks/useCss";
+import { formatUnit } from "@/utils/formatUnit";
 import { play } from "@/stores/usePlay";
 import { videoRef, playerRef } from "@/stores/useEl";
 import { handleMouseMove, bottomVisible } from "@/stores/useBottom";
@@ -51,15 +53,16 @@ selectedIndex.value = history.value;
 //hls实例
 const hls = new Hls();
 
+//加载完成播放
+hls.on(Hls.Events.MANIFEST_PARSED, () => {
+  hls.currentLevel = hls.levels.length - 1;
+  play();
+});
+
 //监视currentSrc
 watchEffect(() => {
   history.value = selectedIndex.value;
   hls.loadSource(selectedSrc.value);
-
-  //加载完成播放
-  hls.on(Hls.Events.MANIFEST_PARSED, () => {
-    play();
-  });
 });
 
 //挂载
@@ -70,6 +73,10 @@ onMounted(() => {
 //卸载
 onUnmounted(() => {
   hls.destroy();
+});
+
+defineExpose({
+  videoRef,
 });
 </script>
 

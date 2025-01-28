@@ -29,7 +29,7 @@
 <script setup lang="ts">
 import ProgressTip from "@/components/ProgressTip.vue";
 import { bottomVisible } from "@/stores/useBottom";
-import { formatTime } from "@/hooks/useFormatTime";
+import { formatTime } from "@/utils/formatTime";
 import {
   videoDuration,
   videoCurrentTime,

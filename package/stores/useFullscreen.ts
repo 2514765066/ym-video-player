@@ -1,16 +1,13 @@
 import { playerRef } from "./useEl";
 
 //是否全屏
-const _isFullscreen = ref(false);
-export const isFullscreen = readonly(_isFullscreen);
+export const isFullscreen = ref(false);
 
 //全屏
 export const full = async () => {
   if (!playerRef.value) {
     return;
   }
-
-  _isFullscreen.value = true;
 
   await playerRef.value.requestFullscreen();
 };
@@ -21,8 +18,6 @@ export const exit = async () => {
     return;
   }
 
-  _isFullscreen.value = false;
-
   await document.exitFullscreen();
 };
 
@@ -30,3 +25,8 @@ export const exit = async () => {
 export const toggle = () => {
   isFullscreen.value ? exit() : full();
 };
+
+//监视全屏状态
+document.addEventListener("fullscreenchange", () => {
+  isFullscreen.value = !!document.fullscreenElement;
+});

@@ -12,7 +12,7 @@ import { isFullscreen } from "@/stores/useFullscreen";
 import ToolTip from "@/components/ToolTip.vue";
 import { toggle } from "@/stores/useFullscreen";
 
-const content = computed(() => (isFullscreen ? "退出全屏" : "全屏"));
+const content = computed(() => (isFullscreen.value ? "退出全屏" : "全屏"));
 </script>
 
 <style scoped lang="scss"></style>

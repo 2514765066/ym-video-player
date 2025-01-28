@@ -1,10 +1,7 @@
 import { isFullscreen } from "./useFullscreen";
 
-//bottom是否显示
-const _bottomVisible = ref(true);
-
 //只读
-export const bottomVisible = readonly(_bottomVisible);
+export const bottomVisible = ref(true);
 
 //bottom隐藏的计时器
 let timer: number;
@@ -15,7 +12,7 @@ const show = () => {
     return;
   }
 
-  _bottomVisible.value = true;
+  bottomVisible.value = true;
 };
 
 //在player中移动触发
@@ -29,6 +26,6 @@ export const handleMouseMove = () => {
       return;
     }
 
-    _bottomVisible.value = false;
+    bottomVisible.value = false;
   }, 2000);
 };
