@@ -51,7 +51,9 @@ list.value = props.list;
 selectedIndex.value = history.value;
 
 //hls实例
-const hls = new Hls();
+const hls = new Hls({
+  startFragPrefetch: true,
+});
 
 //加载完成播放
 hls.on(Hls.Events.MANIFEST_PARSED, () => {
