@@ -21,12 +21,11 @@ import Video from "./components/Video/index.vue";
 import Bottom from "./components/Bottom/index.vue";
 import List from "./components/List/index.vue";
 import { formatUnit } from "@/utils/formatUnit";
-import { playerRef } from "@/stores/useEl";
+import { videoRef, playerRef } from "@/stores/useEl";
 import { handleMouseMove, bottomVisible } from "@/stores/useBottom";
 import { list, selectedIndex, selectedSrc } from "@/stores/useList";
 import { useEvent } from "@/hooks/useEvent";
 import { useHls } from "@/hooks/useHls";
-import { videoCurrentTime } from "@/stores/useTime";
 
 const { hls } = useHls();
 useEvent();
@@ -63,7 +62,7 @@ const init = () => {
 init();
 
 defineExpose({
-  videoCurrentTime,
+  videoRef,
 });
 </script>
 
