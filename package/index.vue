@@ -20,14 +20,15 @@ import Volume from "@/components/Tip/Volume.vue";
 import Video from "./components/Video/index.vue";
 import Bottom from "./components/Bottom/index.vue";
 import List from "./components/List/index.vue";
-import Hls from "hls.js";
 import { formatUnit } from "@/utils/formatUnit";
-import { play } from "@/stores/usePlay";
-import { videoRef, playerRef } from "@/stores/useEl";
+import { playerRef } from "@/stores/useEl";
 import { handleMouseMove, bottomVisible } from "@/stores/useBottom";
 import { list, selectedIndex, selectedSrc } from "@/stores/useList";
 import { useEvent } from "@/hooks/useEvent";
+import { useHls } from "@/hooks/useHls";
+import { videoCurrentTime } from "@/stores/useTime";
 
+const { hls } = useHls();
 useEvent();
 
 const props = withDefaults(
@@ -47,38 +48,22 @@ const history = defineModel({
   default: 0,
 });
 
-list.value = props.list;
-selectedIndex.value = history.value;
+//初始化
+const init = () => {
+  list.value = props.list;
+  selectedIndex.value = history.value;
 
-//hls实例
-const hls = new Hls({
-  startFragPrefetch: true,
-});
+  //监视currentSrc
+  watchEffect(() => {
+    history.value = selectedIndex.value;
+    hls.loadSource(selectedSrc.value);
+  });
+};
 
-//加载完成播放
-hls.on(Hls.Events.MANIFEST_PARSED, () => {
-  hls.currentLevel = hls.levels.length - 1;
-  play();
-});
-
-//监视currentSrc
-watchEffect(() => {
-  history.value = selectedIndex.value;
-  hls.loadSource(selectedSrc.value);
-});
-
-//挂载
-onMounted(() => {
-  hls.attachMedia(videoRef.value!);
-});
-
-//卸载
-onUnmounted(() => {
-  hls.destroy();
-});
+init();
 
 defineExpose({
-  videoRef,
+  videoCurrentTime,
 });
 </script>
 

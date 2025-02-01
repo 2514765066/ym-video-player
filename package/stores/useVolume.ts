@@ -1,7 +1,7 @@
 import { videoRef } from "./useEl";
 
 //声音
-export const volume = ref(100);
+export const volume = ref(Number(localStorage.getItem("volume")) || 100);
 
 //改变声音
 export const updateVolume = (num: number) => {
@@ -23,4 +23,5 @@ watchEffect(() => {
   }
 
   videoRef.value.volume = volume.value / 100;
+  localStorage.setItem("volume", String(volume.value));
 });

@@ -1,7 +1,7 @@
 import { videoRef } from "./useEl";
 
 //倍速
-export const playrate = ref(1);
+export const playrate = ref(Number(localStorage.getItem("playrate")) || 1);
 
 //监视倍速
 watchEffect(() => {
@@ -10,4 +10,5 @@ watchEffect(() => {
   }
 
   videoRef.value.playbackRate = playrate.value;
+  localStorage.setItem("playrate", String(playrate.value));
 });
