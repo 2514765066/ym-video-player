@@ -10,13 +10,21 @@ export const videoCurrentTime = ref(0);
 export const videoBufferedTime = ref(0);
 
 //前进
-export const forward = (seconde: number = 5) => {
-  go(videoCurrentTime.value + seconde);
+export const forward = () => {
+  if (!videoRef.value) {
+    return;
+  }
+
+  go(videoRef.value.currentTime + 5);
 };
 
 //后退
-export const back = (seconde: number = 5) => {
-  go(videoCurrentTime.value - seconde);
+export const back = () => {
+  if (!videoRef.value) {
+    return;
+  }
+
+  go(videoRef.value.currentTime - 5);
 };
 
 //到达某一时间

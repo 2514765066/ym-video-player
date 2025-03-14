@@ -3,7 +3,7 @@
     class="ym-player"
     ref="playerRef"
     @mousemove="handleMouseMove"
-    :class="{ 'ym-player-hidden-cursor': !bottomVisible }"
+    :class="{ 'ym-player-hidden-cursor': !controlVisible }"
   >
     <Video />
 
@@ -21,18 +21,21 @@ import Video from "./components/Video/index.vue";
 import Bottom from "./components/Bottom/index.vue";
 import List from "./components/List/index.vue";
 import { formatUnit } from "@/utils/formatUnit";
-import { videoRef, playerRef } from "@/stores/useEl";
-import { handleMouseMove, bottomVisible } from "@/stores/useBottom";
-import { list, selectedIndex, selectedSrc } from "@/stores/useList";
-import { useEvent } from "@/hooks/useEvent";
-import { useHls } from "@/hooks/useHls";
+import { playerRef } from "@/stores/useEl";
+import { handleMouseMove, controlVisible } from "@/stores/useBottom";
+import { useInit } from "@/hooks/useInit";
+import { videoCurrentTime } from "@/stores/useTime";
+import type { Data } from "./type";
+import { key } from "./type";
 
-const { hls } = useHls();
-useEvent();
+const data = defineModel<Data>({
+  required: true,
+});
 
-const props = withDefaults(
+useInit(data);
+
+withDefaults(
   defineProps<{
-    list: string[];
     width?: number | string;
     height?: number | string;
   }>(),
@@ -42,28 +45,17 @@ const props = withDefaults(
   }
 );
 
-//当前播放索引
-const history = defineModel({
-  default: 0,
+//保存播放时间
+watch(data, (_, oldValue) => {
+  oldValue.currentTime = videoCurrentTime.value;
 });
 
-//初始化
-const init = () => {
-  list.value = props.list;
-  selectedIndex.value = history.value;
-
-  //监视currentSrc
-  watchEffect(() => {
-    history.value = selectedIndex.value;
-    hls.loadSource(selectedSrc.value);
-  });
-};
-
-init();
-
-defineExpose({
-  videoRef,
+//保存播放时间
+onUnmounted(() => {
+  data.value.currentTime = videoCurrentTime.value;
 });
+
+provide(key, data);
 </script>
 
 <style lang="scss">

@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import ToolTip from "@/components/ToolTip.vue";
+import ToolTip from "@/lib/ToolTip.vue";
 import { videoRef } from "@/stores/useEl";
 import { exit } from "@/stores/useFullscreen";
 

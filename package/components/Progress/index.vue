@@ -13,7 +13,7 @@
     @click="go(seconde)"
   >
     <!-- 整个轨道 -->
-    <div ref="progressRef" :style="{ opacity: bottomVisible ? 1 : 0 }"></div>
+    <div ref="progressRef" :style="{ opacity: controlVisible ? 1 : 0 }"></div>
 
     <!-- 缓冲进度 -->
     <div></div>
@@ -27,14 +27,14 @@
 </template>
 
 <script setup lang="ts">
-import ProgressTip from "@/components/ProgressTip.vue";
-import { bottomVisible } from "@/stores/useBottom";
+import ProgressTip from "@/lib/ProgressTip.vue";
+import { controlVisible } from "@/stores/useBottom";
 import { formatTime } from "@/utils/formatTime";
 import {
   videoDuration,
-  videoCurrentTime,
   videoBufferedTime,
   go,
+  videoCurrentTime,
 } from "@/stores/useTime";
 
 //进度条元素实例

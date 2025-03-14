@@ -7,11 +7,11 @@
 </template>
 
 <script setup lang="ts">
-import ToolTip from "@/components/ToolTip.vue";
-import { listVisible } from "@/stores/useList";
+import eventEmitter from "@/hooks/eventEmitter";
+import ToolTip from "@/lib/ToolTip.vue";
 
 const handleClick = () => {
-  listVisible.value = !listVisible.value;
+  eventEmitter.emit("list:show");
 };
 </script>
 

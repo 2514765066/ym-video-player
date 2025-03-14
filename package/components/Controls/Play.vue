@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import ToolTip from "@/components/ToolTip.vue";
+import ToolTip from "@/lib/ToolTip.vue";
 import { isPlay, toggle } from "@/stores/usePlay";
 
 const content = computed(() => (isPlay.value ? "暂停" : "播放"));

@@ -1,7 +1,7 @@
 <template>
   <ElTooltip
     virtual-triggering
-    effect="light"
+    effect="dark"
     placement="top"
     v-model:visible="visible"
     :virtual-ref="triggerRef"

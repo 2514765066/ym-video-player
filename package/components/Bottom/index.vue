@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import Progress from "./Progress.vue";
+import Progress from "@/components/Progress/index.vue";
 import Controls from "@/components/Controls/index.vue";
 import { isPlay } from "@/stores/usePlay";
 </script>

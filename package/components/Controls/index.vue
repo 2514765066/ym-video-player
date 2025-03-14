@@ -1,5 +1,5 @@
 <template>
-  <section class="ym-player-controls" v-show="bottomVisible">
+  <section class="ym-player-controls" v-show="controlVisible">
     <Play />
 
     <Next />
@@ -24,7 +24,7 @@ import Time from "./Time.vue";
 import PlayRate from "./PlayRate.vue";
 import Pip from "./Pip.vue";
 import Fullscreen from "./Fullscreen.vue";
-import { bottomVisible } from "@/stores/useBottom";
+import { controlVisible } from "@/stores/useBottom";
 </script>
 
 <style scoped lang="scss">

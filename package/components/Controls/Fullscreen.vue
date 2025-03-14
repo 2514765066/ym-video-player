@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 import { isFullscreen } from "@/stores/useFullscreen";
-import ToolTip from "@/components/ToolTip.vue";
+import ToolTip from "@/lib/ToolTip.vue";
 import { toggle } from "@/stores/useFullscreen";
 
 const content = computed(() => (isFullscreen.value ? "退出全屏" : "全屏"));

@@ -2,11 +2,15 @@
   <ElTooltip
     effect="light"
     placement="top"
-    :hide-after="0"
+    :hide-after="100"
     :append-to="playerRef"
     v-bind="$attrs"
   >
     <slot></slot>
+
+    <template #content>
+      <slot name="content"></slot>
+    </template>
   </ElTooltip>
 </template>
 

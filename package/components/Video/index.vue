@@ -4,8 +4,7 @@
     @click="toggle"
     @timeupdate="handleTimeUpdate"
     @playing="handleBufferedTime"
-    @loadedmetadata="handleDuration"
-    @durationchange="handleDuration"
+    @loadedmetadata="handleLoad"
     @ended="next"
   ></video>
 </template>
@@ -18,15 +17,17 @@ import {
   videoCurrentTime,
   videoBufferedTime,
 } from "@/stores/useTime";
-import { next } from "@/stores/useList";
+import { key } from "@/type";
 
-//处理加载事件
-const handleDuration = () => {
-  if (!videoRef.value) {
+const data = inject(key)!;
+
+//下一集
+const next = () => {
+  if (!(data.value.history < data.value.url.length - 1)) {
     return;
   }
 
-  videoDuration.value = videoRef.value.duration;
+  data.value.history++;
 };
 
 //获取播放事件
@@ -53,6 +54,17 @@ const handleBufferedTime = () => {
   }
 
   videoBufferedTime.value = bufferedTime;
+};
+
+//处理加载完成
+const handleLoad = () => {
+  if (!videoRef.value) {
+    return;
+  }
+
+  videoDuration.value = videoRef.value.duration;
+  videoCurrentTime.value = data.value.currentTime;
+  videoRef.value.currentTime = data.value.currentTime;
 };
 </script>
 

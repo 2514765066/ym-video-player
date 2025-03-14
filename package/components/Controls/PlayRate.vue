@@ -1,5 +1,5 @@
 <template>
-  <ElTooltip placement="top" effect="light" :append-to="playerRef">
+  <ToolTip>
     <section>
       <span>倍速</span>
     </section>
@@ -16,13 +16,12 @@
         </li>
       </ul>
     </template>
-  </ElTooltip>
+  </ToolTip>
 </template>
 
 <script setup lang="ts">
-import { ElTooltip } from "element-plus";
+import ToolTip from "@/lib/ToolTip.vue";
 import { playrate } from "@/stores/usePlayrate";
-import { playerRef } from "@/stores/useEl";
 
 //倍速
 const playrateList = ["2.0", "1.5", "1.25", "1.0", "0.75", "0.5"];

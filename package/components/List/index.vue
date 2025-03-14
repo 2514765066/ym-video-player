@@ -3,12 +3,12 @@
     enter-active-class="ym-mask-enter"
     leave-active-class="ym-mask-leave"
   >
-    <section class="ym-player-list" v-show="listVisible" @click.self="close">
+    <section class="ym-player-list" v-show="visible" @click.self="close">
       <Transition
         enter-active-class="ym-content-enter"
         leave-active-class="ym-content-leave"
       >
-        <main v-show="listVisible">
+        <main v-show="visible">
           <header>
             <p>选集</p>
 
@@ -17,9 +17,9 @@
 
           <ElScrollbar view-class="ym-player-list-content">
             <li
-              v-for="(_, index) of list"
+              v-for="(_, index) of data.url"
               :key="index"
-              :class="{ active: index == selectedIndex }"
+              :class="{ active: index == data.history }"
               @click="handleClick(index)"
             >
               {{ index + 1 }}
@@ -33,12 +33,27 @@
 
 <script setup lang="ts">
 import { ElScrollbar } from "element-plus";
-import { list, selectedIndex, listVisible, close } from "@/stores/useList";
+import { key } from "@/type";
+import eventEmitter from "@/hooks/eventEmitter";
+
+const data = inject(key)!;
+
+//集数列表是否可见
+const visible = ref(false);
+
+//关闭列表
+const close = () => {
+  visible.value = false;
+};
 
 //处理点击集数
 const handleClick = (index: number) => {
-  selectedIndex.value = index;
+  data.value.history = index;
 };
+
+eventEmitter.on("list:show", () => {
+  visible.value = true;
+});
 </script>
 
 <style lang="scss">
