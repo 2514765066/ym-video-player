@@ -16,6 +16,7 @@ const visible = computed(() => data.value.history < data.value.url.length - 1);
 
 const next = () => {
   data.value.history++;
+  data.value.currentTime = 0;
 };
 </script>
 

@@ -28,6 +28,7 @@ const next = () => {
   }
 
   data.value.history++;
+  data.value.currentTime = 0;
 };
 
 //获取播放事件
