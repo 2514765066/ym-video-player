@@ -11,6 +11,8 @@ export const useInit = (data: ModelRef<Data>) => {
   //hls实例
   const hls = new Hls({
     startFragPrefetch: true,
+    maxBufferLength: 5 * 60,
+    maxBufferSize: 1024 * 1024 * 200,
   });
 
   //加载完成播放

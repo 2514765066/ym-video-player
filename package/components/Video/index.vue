@@ -46,15 +46,11 @@ const handleBufferedTime = () => {
     return;
   }
 
-  const buffered = videoRef.value.buffered;
+  const buffered = videoRef.value.buffered.end(
+    videoRef.value.buffered.length - 1
+  );
 
-  let bufferedTime = 0;
-
-  for (let i = 0; i < buffered.length; i++) {
-    bufferedTime = buffered.end(i);
-  }
-
-  videoBufferedTime.value = bufferedTime;
+  videoBufferedTime.value = buffered;
 };
 
 //处理加载完成

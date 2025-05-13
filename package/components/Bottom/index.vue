@@ -1,5 +1,9 @@
 <template>
-  <section class="ym-player-bottom">
+  <section
+    class="ym-player-bottom"
+    @mouseenter="isHover = true"
+    @mouseleave="isHover = false"
+  >
     <img
       src="@/assets/pause-logo.svg"
       :style="{ opacity: isPlay ? 0 : 0.85 }"
@@ -14,6 +18,7 @@
 import Progress from "@/components/Progress/index.vue";
 import Controls from "@/components/Controls/index.vue";
 import { isPlay } from "@/stores/usePlay";
+import { isHover } from "@/stores/useBottom";
 </script>
 
 <style scoped lang="scss">

@@ -29,7 +29,11 @@ import type { Data } from "./type";
 import { key } from "./type";
 
 const data = defineModel<Data>({
-  required: true,
+  default: {
+    history: 0,
+    currentTime: 0,
+    url: [],
+  },
 });
 
 useInit(data);
@@ -51,8 +55,19 @@ watch(data, (_, oldValue) => {
 });
 
 //保存播放时间
-onUnmounted(() => {
+const save = () => {
   data.value.currentTime = videoCurrentTime.value;
+};
+
+//关闭页面保存
+onMounted(() => {
+  window.addEventListener("beforeunload", save);
+});
+
+//保存播放时间
+onUnmounted(() => {
+  window.removeEventListener("beforeunload", save);
+  save();
 });
 
 provide(key, data);
