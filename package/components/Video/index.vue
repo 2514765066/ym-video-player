@@ -3,7 +3,7 @@
     ref="videoRef"
     @click="toggle"
     @timeupdate="handleTimeUpdate"
-    @playing="handleBufferedTime"
+    @progress="handleBufferedTime"
     @loadedmetadata="handleLoad"
     @ended="next"
   ></video>
