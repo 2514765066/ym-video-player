@@ -11,12 +11,12 @@
 
     <List />
 
-    <Volume />
+    <!-- <Volume /> -->
   </section>
 </template>
 
 <script setup lang="ts">
-import Volume from "@/components/Tip/Volume.vue";
+// import Volume from "@/components/Tip/Volume.vue";
 import Video from "./components/Video/index.vue";
 import Bottom from "./components/Bottom/index.vue";
 import List from "./components/List/index.vue";
@@ -79,7 +79,7 @@ provide(key, data);
 }
 
 .ym-player {
-  --main-color: red;
+  --main-color: #2383e2;
 
   width: v-bind("formatUnit(width)");
   height: v-bind("formatUnit(height)");

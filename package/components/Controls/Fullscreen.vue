@@ -1,15 +1,15 @@
 <template>
-  <ToolTip :content="content">
+  <Tip :title="content">
     <section @click="toggle">
       <img src="@/assets/fullscreen-off.svg" width="22" v-show="isFullscreen" />
       <img src="@/assets/fullscreen-on.svg" width="22" v-show="!isFullscreen" />
     </section>
-  </ToolTip>
+  </Tip>
 </template>
 
 <script setup lang="ts">
 import { isFullscreen } from "@/stores/useFullscreen";
-import ToolTip from "@/lib/ToolTip.vue";
+import Tip from "@/lib/Tip.vue";
 import { toggle } from "@/stores/useFullscreen";
 
 const content = computed(() => (isFullscreen.value ? "退出全屏" : "全屏"));

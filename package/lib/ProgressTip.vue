@@ -1,13 +1,13 @@
 <template>
   <ElTooltip
     virtual-triggering
-    effect="light"
     placement="top"
     v-model:visible="visible"
     :virtual-ref="triggerRef"
     :hide-after="0"
     :append-to="playerRef"
     v-bind="$attrs"
+    popper-class="ym-tooltip-tip"
   />
 </template>
 

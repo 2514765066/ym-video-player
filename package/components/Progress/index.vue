@@ -98,12 +98,12 @@ const handleMouseMove = (e: MouseEvent) => {
 
   > div:first-child {
     width: 100%;
-    background-color: rgba(#fff, $alpha: 0.2);
+    background-color: rgba(#fff, 0.2);
   }
 
   > div:nth-child(2) {
     width: v-bind("bufferedWidth");
-    background-color: #858585;
+    background-color: #5c5c5c;
   }
 
   > div:nth-child(3) {

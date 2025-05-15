@@ -1,5 +1,5 @@
 <template>
-  <ToolTip>
+  <Tip>
     <section>
       <span>倍速</span>
     </section>
@@ -10,21 +10,21 @@
           v-for="item of playrateList"
           :key="item"
           :class="{ active: Number(item) == playrate }"
-          @click="playrate = Number(item)"
+          @click="updatePlayrate(item)"
         >
           {{ item }}x
         </li>
       </ul>
     </template>
-  </ToolTip>
+  </Tip>
 </template>
 
 <script setup lang="ts">
-import ToolTip from "@/lib/ToolTip.vue";
-import { playrate } from "@/stores/usePlayrate";
+import Tip from "@/lib/Tip.vue";
+import { updatePlayrate, playrate } from "@/stores/usePlayrate";
 
 //倍速
-const playrateList = ["2.0", "1.5", "1.25", "1.0", "0.75", "0.5"];
+const playrateList = ["4.0", "3.0", "2.0", "1.5", "1.25", "1.0", "0.75", "0.5"];
 </script>
 
 <style scoped lang="scss">

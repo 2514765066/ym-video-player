@@ -5,13 +5,15 @@
     @timeupdate="handleTimeUpdate"
     @progress="handleBufferedTime"
     @loadedmetadata="handleLoad"
+    @play="play"
+    @pause="pause"
     @ended="next"
   ></video>
 </template>
 
 <script setup lang="ts">
 import { videoRef } from "@/stores/useEl";
-import { toggle } from "@/stores/usePlay";
+import { toggle, play, pause } from "@/stores/usePlay";
 import {
   videoDuration,
   videoCurrentTime,

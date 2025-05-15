@@ -1,13 +1,13 @@
 <template>
-  <ToolTip content="画中画">
+  <Tip title="画中画">
     <section @click="handlePip">
       <img src="@/assets/pip.svg" width="22" />
     </section>
-  </ToolTip>
+  </Tip>
 </template>
 
 <script setup lang="ts">
-import ToolTip from "@/lib/ToolTip.vue";
+import Tip from "@/lib/Tip.vue";
 import { videoRef } from "@/stores/useEl";
 import { exit } from "@/stores/useFullscreen";
 

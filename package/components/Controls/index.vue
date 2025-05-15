@@ -10,6 +10,8 @@
 
     <PlayRate />
 
+    <Volume />
+
     <Pip />
 
     <Fullscreen />
@@ -17,6 +19,7 @@
 </template>
 
 <script setup lang="ts">
+import Volume from "./Volume.vue";
 import Play from "./Play.vue";
 import Next from "./Next.vue";
 import List from "./List.vue";

@@ -1,14 +1,14 @@
 <template>
-  <ToolTip content="选集">
+  <Tip title="选集">
     <section @click="handleClick">
       <img src="@/assets/list.svg" width="24" />
     </section>
-  </ToolTip>
+  </Tip>
 </template>
 
 <script setup lang="ts">
 import eventEmitter from "@/hooks/eventEmitter";
-import ToolTip from "@/lib/ToolTip.vue";
+import Tip from "@/lib/Tip.vue";
 
 const handleClick = () => {
   eventEmitter.emit("list:show");

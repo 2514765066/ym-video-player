@@ -5,27 +5,23 @@ export const isPlay = ref(false);
 
 //播放
 export const play = () => {
-  if (!videoRef.value) {
-    return;
-  }
-
   isPlay.value = true;
-
-  videoRef.value.play();
 };
 
 //暂停
 export const pause = () => {
-  if (!videoRef.value) {
-    return;
-  }
-
   isPlay.value = false;
-
-  videoRef.value.pause();
 };
 
 //切换
 export const toggle = () => {
-  isPlay.value ? pause() : play();
+  isPlay.value = !isPlay.value;
 };
+
+watchEffect(() => {
+  if (!videoRef.value) {
+    return;
+  }
+
+  isPlay.value ? videoRef.value.play() : videoRef.value.pause();
+});
