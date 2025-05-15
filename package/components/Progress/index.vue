@@ -112,7 +112,7 @@ const handleMouseMove = (e: MouseEvent) => {
   }
 
   > aside {
-    $size: 10px;
+    $size: 8px;
     width: $size;
     height: $size;
 
@@ -122,6 +122,7 @@ const handleMouseMove = (e: MouseEvent) => {
     opacity: 0;
     border-radius: calc($size / 2);
     background-color: var(--main-color);
+    box-shadow: 0 0 0 4px #454545;
     transition: 0.1s;
   }
 

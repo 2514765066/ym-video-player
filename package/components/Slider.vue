@@ -61,16 +61,20 @@ section {
     background-color: #9f9f9f;
 
     &::-webkit-slider-thumb {
-      z-index: 1;
-      appearance: none;
+      $size: 8px;
+      width: $size;
+      height: $size;
+
       position: relative;
-      width: 8px;
-      height: 8px;
+      z-index: 1;
+
       border-radius: 50%;
       background-color: var(--main-color);
       box-shadow: 0 0 0 4px #454545;
       transition: 0.1s;
       cursor: pointer;
+
+      appearance: none;
 
       &:hover {
         transform: scale(1.3);
